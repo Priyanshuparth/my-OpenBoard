@@ -4,17 +4,14 @@ const socket = require("socket.io");
 const app = express(); //Initialized and server ready
 app.use(express.static("public"));
 
-let port=5000;
-let server=app.listen(port,()=>{
-    console.log("Listning to port "+port);
+
+let port = process.env.PORT || 5000;
+let server = app.listen(port, () => {
+    console.log("Listening to port" + port);
 })
 
 let io = socket(server);
 
-// let port = process.env.PORT || 5000;
-// let server = app.listen(port, () => {
-//     console.log("Listening to port" + port);
-// })
 
 
 io.on("connection", (socket) => {
